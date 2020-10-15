@@ -106,7 +106,7 @@ d3.csv('./data/wealth-health-2014.csv', d3.autoType).then(data=>{
 
     legend = svg.append("g")
                 .attr("transform", 'translate(' + 0.8 * width + ',' + 
-                (height - 2.3 * (colorScale.domain().length) * legendFont) + ')')
+                (height - 2 * (colorScale.domain().length) * legendFont) + ')')
     
     legend.selectAll('rect')                     
         .data(colorScale.domain())                                   
@@ -115,16 +115,16 @@ d3.csv('./data/wealth-health-2014.csv', d3.autoType).then(data=>{
         .attr('class', 'box')
         .attr("height", legendFont) 
         .attr("width", legendFont)
-        .attr('x', -20)
-        .attr('y', (d,i) => i * 1.8 * legendFont)
+        .attr('x', -10)
+        .attr('y', (d,i) => i * 1.5 * legendFont)
         .attr('fill', d => colorScale(d));
 
     legend.selectAll("text")
         .data(colorScale.domain())
         .enter()
         .append("text")
-        .attr('x', legendFont - 15)
-        .attr('y', (d,i) => 1 + i * 1.8 * legendFont)
+        .attr('x', legendFont - 8)
+        .attr('y', (d,i) => 1 + i * 1.5 * legendFont)
         .attr('font-size', legendFont)
         .attr('text-anchor', 'beginning')
         .attr('alignment-baseline', 'hanging')
