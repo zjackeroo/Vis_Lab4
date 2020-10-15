@@ -27,7 +27,7 @@ d3.csv('./data/wealth-health-2014.csv', d3.autoType).then(data=>{
         .domain(d3.extent(data, d=>d.Population))
         .range([4, 20]);
     // console.log(xScale(data.Income));
-    const legendFont = 10;
+    const font = 10;
 
     const svg = d3.select('.chart')
                 .append('svg')
@@ -106,28 +106,28 @@ d3.csv('./data/wealth-health-2014.csv', d3.autoType).then(data=>{
 
     legend = svg.append("g")
                 .attr("transform", 'translate(' + 0.8 * width + ',' + 
-                (height - 2 * (colorScale.domain().length) * legendFont) + ')')
+                (height - 2 * (colorScale.domain().length) * font) + ')')
     
-    legend.selectAll('rect')                     
+    legend.selectAll('legengRect')                     
         .data(colorScale.domain())                                   
         .enter()                                                
         .append('rect')                                            
         .attr('class', 'box')
-        .attr("height", legendFont) 
-        .attr("width", legendFont)
+        .attr("height", font) 
+        .attr("width", font)
         .attr('x', -10)
-        .attr('y', (d,i) => i * 1.5 * legendFont)
-        .attr('fill', d => colorScale(d));
+        .attr('y', (d,i)=>(i * 1.5 * font))
+        .attr('fill', d=>colorScale(d));
 
     legend.selectAll("text")
         .data(colorScale.domain())
         .enter()
         .append("text")
-        .attr('x', legendFont - 8)
-        .attr('y', (d,i) => 1 + i * 1.5 * legendFont)
-        .attr('font-size', legendFont)
+        .attr('x', font - 8)
+        .attr('y', (d,i)=>(1+i*1.5*font))
+        .attr('font-size', font)
         .attr('text-anchor', 'beginning')
         .attr('alignment-baseline', 'hanging')
-        .text(d => d);
+        .text(d=>d);
     
 })
